@@ -1,0 +1,40 @@
+
+{{#paper-sidenav-container class="inner-sidenav"}}
+ {{#paper-sidenav 
+		classNames="md-sidenav-left md-whiteframe-z2"
+		flex-layout="column" 
+		flex=true }}
+		{{#paper-toolbar  class="site-content-toolbar"}}
+			<div class="md-toolbar-tools">
+				<img src="/images/loro.svg" height="50">&nbsp;&nbsp;<strong>MS</strong>
+			</div>
+		{{/paper-toolbar}}
+		{{#paper-content}}
+			{{#paper-list}}
+				{{#each routes as |route|}}
+					<div class="{{ action "isActive" route}}">
+						{{#paper-item  href=(href-to route.path) }}
+							{{paper-icon icon="home" size="lg"}}
+								{{route.text}}
+						{{/paper-item}}
+					</div>
+				{{/each}}
+			{{/paper-list}}
+		{{/paper-content}}
+	{{/paper-sidenav}} 
+	
+
+  <div layout="column" tabindex="-1" role="main" style="flex:1;">
+    {{#paper-toolbar }}
+      <div class="md-toolbar-tools">
+        <span class="md-breadcrumb-page">{{routeText}}</span>
+      </div>
+    {{/paper-toolbar}}
+
+    {{#paper-content class="md-padding"}}
+      {{outlet}}
+    {{/paper-content}}
+  </div>
+{{/paper-sidenav-container}}
+
+
